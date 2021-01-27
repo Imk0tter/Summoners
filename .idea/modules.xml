@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Tools/Publicizer/Publicizer.iml" filepath="$PROJECT_DIR$/Tools/Publicizer/Publicizer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tools/Renamer/Renamer.iml" filepath="$PROJECT_DIR$/Tools/Renamer/Renamer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Summoners.iml" filepath="$PROJECT_DIR$/Summoners.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tools/Tools.iml" filepath="$PROJECT_DIR$/Tools/Tools.iml" />
+    </modules>
+  </component>
+</project>
