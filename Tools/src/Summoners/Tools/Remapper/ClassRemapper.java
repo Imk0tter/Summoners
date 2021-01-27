@@ -21,7 +21,7 @@ public class ClassRemapper extends ClassVisitor {
 
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         this.className = name;
-        super.visit(version, access, this.remapper.mapType(name), this.remapper.mapSignature(signature, false), this.remapper.mapType(superName), interfaces == null ? null : this.remapper.mapTypes(interfaces));
+        super.visit(version, this.remapper.mapAccess(name, access), this.remapper.mapType(name), this.remapper.mapSignature(signature, false), this.remapper.mapType(superName), interfaces == null ? null : this.remapper.mapTypes(interfaces));
     }
 
     public ModuleVisitor visitModule(String name, int flags, String version) {

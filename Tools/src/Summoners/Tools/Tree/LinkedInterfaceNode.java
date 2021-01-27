@@ -81,9 +81,8 @@ public class LinkedInterfaceNode {
      */
 
     public boolean rename(String name, List<LinkedInterfaceNode> visited) {
-        int idx = 1;
-
         if (!visited.contains(this)) {
+            int idx = 1;
             if (!HasNodeFlags(NodeFlags.FLAG_IGNORE_CLASS | NodeFlags.FLAG_EXTERNAL, false)) {
                 newName = this.name.substring(0, this.name.lastIndexOf("/") + 1) + name;
                 visited.add(this);
@@ -97,55 +96,6 @@ public class LinkedInterfaceNode {
             }
         }
         return false;
-    }
-    public boolean rename2(String name) {
-        if (HasNodeFlags(NodeFlags.FLAG_IGNORE_CLASS, false)) {
-            return false;
-        }
-        if (!name.contains("/")) {
-            name = this.name.substring(0,
-                    this.name.lastIndexOf('/') + 1) + name;
-        } else if (name.startsWith("/")) {
-            name = name.substring(1);
-        }
-        if (newName == null && !this.name.equals("java/lang/Object")) {
-            if (!HasNodeFlags(NodeFlags.FLAG_EXTERNAL, false) && superName.equals("java/lang/Object")) {
-
-                newName = this.name.substring(0, this.name.lastIndexOf("/")) + name.substring(name.lastIndexOf("/"));
-            } else {
-                //NOT subclass of java/lang/object OR NOT external or EXTERNAL
-                newName = this.name;
-                name = this.name.substring(this.name.lastIndexOf("/") + 1);
-            }
-            int idx = 0;
-            for (LinkedInterfaceNode child : children) {
-                if (child.superName.equals(this.name)) {
-                    child.renameSub(name.substring(
-                            name.lastIndexOf('/') + 1) + "_Sub" + ++idx);
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-    protected void renameSub(String name) {
-        if (HasNodeFlags(NodeFlags.FLAG_IGNORE_CLASS, false)) {
-            return;
-        }
-        //if (!external) {
-        if (!HasNodeFlags(NodeFlags.FLAG_EXTERNAL, false)) {
-            newName = this.name.substring(0,this.name.lastIndexOf("/") + 1) + name;
-        } else {
-            name = this.name.substring(this.name.lastIndexOf('/') + 1);
-        }
-        int idx = 0;
-        for (LinkedInterfaceNode child : children) {
-            if (child.superName.equals(this.name)) {
-                child.renameSub(name.substring(
-                        name.lastIndexOf('/') + 1) + "_Sub" + ++idx);
-            }
-        }
     }
 
     public boolean renameField(MemberNode node, String name) {

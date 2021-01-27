@@ -179,6 +179,7 @@ public class Publicizer {
         }
         writer.flush();
     }
+    
     // TODO: Pass renaming rules to this method.
     public Remapper rename(Map<String, LinkedInterfaceNode> tree) {
         int fieldPostfix = 1;
@@ -192,35 +193,28 @@ public class Publicizer {
         LinkedList<LinkedInterfaceNode> visited = new LinkedList<LinkedInterfaceNode>();
 
         for (LinkedInterfaceNode node : tree.values()) {
-            boolean cont;
-            do {
-                cont = false;
-                if (!node.HasNodeFlags(NodeFlags.FLAG_EXTERNAL | NodeFlags.FLAG_IGNORE_CLASS, false)) {
+            if (!node.HasNodeFlags(NodeFlags.FLAG_EXTERNAL | NodeFlags.FLAG_IGNORE_CLASS, false)) {
+
+                if (!(tree.containsKey(node.superName) && !tree.get(node.superName).HasNodeFlags(NodeFlags.FLAG_EXTERNAL | NodeFlags.FLAG_IGNORE_CLASS, false))) {
                     if ((node.access & Opcodes.ACC_INTERFACE) != 0) {
                         if (node.rename("Interface" + interfacePostfix, visited)) {
                             ++interfacePostfix;
-                            cont = true;
                         }
                     } else if ((node.access & Opcodes.ACC_ENUM) != 0) {
                         if (node.rename("Enumerator" + enumPostfix, visited)) {
                             ++enumPostfix;
-                            cont = true;
                         }
                     } else {
                         if (node.rename("Class" + classPostfix, visited)) {
                             ++classPostfix;
-                            cont = true;
                         }
                     }
                 }
-
-            }while (cont);
+            }
         }
+
         PublicizerRemapper remapper = new PublicizerRemapper(tree);
         for (LinkedInterfaceNode node : tree.values()) {
-            /*if (node.name.startsWith("jag") && node.name.startsWith("jac")) {
-                continue;
-            }*/
             if (!node.HasNodeFlags(NodeFlags.FLAG_EXTERNAL, true)) {
                 for (MemberNode field : node.getFields()) {
                     if (node.renameField(field, getFieldName(remapper,

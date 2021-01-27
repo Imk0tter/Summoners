@@ -53,8 +53,7 @@ public class PublicizerRemapper extends Remapper {
             return (access | Opcodes.ACC_PUBLIC) & ~(Opcodes.ACC_FINAL | Opcodes.ACC_PRIVATE | Opcodes.ACC_PROTECTED);
         }
         int newAccess = Opcodes.ACC_PUBLIC;
-        //if ((access & Opcodes.ACC_STATIC) == 0)
-         //   newAccess |= Opcodes.ACC_ABSTRACT;
+
         return (access | newAccess) & ~(Opcodes.ACC_FINAL | Opcodes.ACC_PRIVATE | Opcodes.ACC_PROTECTED);
     }
 
