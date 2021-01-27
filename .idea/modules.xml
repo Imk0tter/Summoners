@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Bots/Bots.iml" filepath="$PROJECT_DIR$/Bots/Bots.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tools/Publicizer/Publicizer.iml" filepath="$PROJECT_DIR$/Tools/Publicizer/Publicizer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Bots/RSCRevolution/RSCRevolution.iml" filepath="$PROJECT_DIR$/Bots/RSCRevolution/RSCRevolution.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tools/Renamer/Renamer.iml" filepath="$PROJECT_DIR$/Tools/Renamer/Renamer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Summoners.iml" filepath="$PROJECT_DIR$/Summoners.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tools/Tools.iml" filepath="$PROJECT_DIR$/Tools/Tools.iml" />
