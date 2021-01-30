@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="RSCRevolution">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/RSCRevolution.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
